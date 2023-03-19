@@ -5,9 +5,9 @@ import re
 usvers = {
     "user": [
         {
-            "id": "",
-            "login": "",
-            "password": ""
+            "id": "0",
+            "login": "admin",
+            "password": "admin"
         }
     ]
 }
