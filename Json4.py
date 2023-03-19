@@ -12,8 +12,9 @@ usvers = {
     ]
 }
 
-if os.path.getsize("/home/sergo/usvers.json") == 0:
-    with open("/home/sergo/usvers.json", 'w', encoding='utf8') as write_file1:
+
+with open("/home/sergo/usvers.json", 'w', encoding='utf8') as write_file1:
+    if os.path.getsize("/home/sergo/usvers.json") == 0:
         json.dump(usvers, write_file1, ensure_ascii=False)
 
 def method(b,c,d):
