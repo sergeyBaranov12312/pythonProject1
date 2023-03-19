@@ -11,10 +11,10 @@ usvers = {
         }
     ]
 }
-
-
-with open("/home/sergo/usvers.json", 'w', encoding='utf8') as write_file1:
-    if os.path.getsize("/home/sergo/usvers.json") == 0:
+if os.path.exists("/home/sergo/usvers.json"):
+    print("hello")
+else:
+    with open("/home/sergo/usvers.json", 'w', encoding='utf8') as write_file1:
         json.dump(usvers, write_file1, ensure_ascii=False)
 
 def method(b,c,d):
@@ -23,7 +23,6 @@ def method(b,c,d):
     if t:
         with open("/home/sergo/usvers.json", encoding='utf8') as read_file:
             n = json.load(read_file)
-            # print(n)
             n["user"].append(new)
             with open("/home/sergo/usvers.json", 'w', encoding='utf8') as write_file:
                 json.dump(n, write_file, ensure_ascii=False, )
