@@ -70,7 +70,7 @@ while True:
             print("пароль менее 8 символов")
             t = False
             break
-        rool = '[A-Za-z0-9!@#$%&]{8,}'
+        rool = '[a-zA-Z0-9]{7,}[!@#$%&]{1,}'
         if re.fullmatch(rool, d):
             t = True
             sch =5
