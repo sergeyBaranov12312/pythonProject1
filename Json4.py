@@ -70,35 +70,35 @@ while True:
             print("пароль менее 8 символов")
             t = False
             break
-        rool = '[a-zA-Z0-9]{7,}[!@#$%&]{1,}'
-        if re.fullmatch(rool, d):
-            t = True
-            sch =5
-            print(sch)
-        rool1 = '[a-zA-Z0-9]+'
-        if re.fullmatch(rool1, d):
-            t = True
-            sch =4
-            print(sch)
-        rool2 = '[a-zA-Z]+'
-        if re.fullmatch(rool2, d):
-            t = True
-            sch =3
-            print(sch)
-        rool3 = '[A-Z]+'
-        if re.fullmatch(rool3, d):
+        rool5 = '[0-9]+'
+        if re.fullmatch(rool5, d):
             t = False
-            sch =2
+            sch = 0
             print(sch)
         rool4 = '[a-z]+'
         if re.fullmatch(rool4, d):
             t = False
             sch = 1
             print(sch)
-        rool5 = '[0-9]+'
-        if re.fullmatch(rool5, d):
+        rool3 = '[A-Z]+'
+        if re.fullmatch(rool3, d):
             t = False
-            sch = 0
+            sch = 2
+            print(sch)
+        rool2 = '^(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ])[A-ZА-ЯЁa-zа-яё]{8,}$'
+        if re.fullmatch(rool2, d):
+            t = True
+            sch = 3
+            print(sch)
+        rool1 = '^(?=.*[A-ZА-ЯЁa-zа-яё])(?=.*\d)[A-ZА-ЯЁa-zа-яё\d]{8,}$'
+        if re.fullmatch(rool1, d):
+            t = True
+            sch = 4
+            print(sch)
+        rool = "^(?=.*[A-ZА-ЯЁa-zф-яё])(?=.*\d)(?=.*[@$!%*#?&])[A-ZА-ЯЁa-zа-я\d@$!%*#?&]{8,}$"
+        if re.fullmatch(rool, d):
+            t = True
+            sch =5
             print(sch)
         if sch <= 2:
             t = False
@@ -126,7 +126,7 @@ while True:
                 if n['user'][j]['login'] == r:
                    o = True
                    p = input("введите новый пароль! ")
-                   rool = '[A-Za-z0-9!@$%&]{8,}'
+                   rool = '^(?=.*[A-ZА-ЯЁa-zф-яё])(?=.*\d)(?=.*[@$!%*#?&])[A-ZА-ЯЁa-zа-я\d@$!%*#?&]{8,}$'
                    if re.fullmatch(rool, p):
                        print("yes")
                        q = True
