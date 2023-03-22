@@ -40,6 +40,11 @@ while True:
         break
     if a == "1":
         b = input("Введите id пользователя")
+        if b.isdigit():
+            print("айди гуд")
+        else:
+            print("айди нот гуд")
+            break
         with open("/home/sergo/usvers.json", encoding='utf8') as read_file:
             n = json.load(read_file)
             j = 0
@@ -106,6 +111,7 @@ while True:
             break
         if 4 >= sch > 2:
             e = input("надо улучшить пароль введите да или нет")
+            e = e.lower()
             if e == "нет":
                 t = False
                 break
