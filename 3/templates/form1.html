@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример обработки формы через AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function send(){
+            $.ajax({
+                type:'POST',
+                url:'/ajax',
+                data: $('form').serialize(), //подготовили строку запроса для сервера на основе введенных данных в форму
+                success: function(answer){
+<!--                     $('h1').html(answer);-->
+                     $('#txt').val(answer);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+
+<br>
+<h1></h1>
+<form action="/calc" method="post">
+      <input type="text" value="" id="txt" name="qwerty" style="width: 250px"/>
+<br />
+<input type="button" value="1" id="button1" />
+<input type="button" value="2" id="button2" />
+<input type="button" value="3" id="button3" />
+<input type="button" value="4" id="button4" />
+<br>
+<input type="button" value="5" id="button5" />
+<input type="button" value="6" id="button6" />
+<input type="button" value="7" id="button7" />
+<input type="button" value="8" id="button8" />
+<br>
+<input type="button" value="9" id="button9" />
+<input type="button" value="0" id="button0" />
+<input type="button" value="+" id="button+" />
+<input type="button" value="-" id="button-" />
+<br>
+<input type="button" value="/" id="button/" />
+<input type="button" value="*" id="button*" />
+<input type="button" value="=" onclick="send()" id="button=" />
+<input type="button" value="C" id="buttonC" />
+<script>
+    for (i=0;i<10;i++){
+        let myButton = document.getElementById(`button${i}`);
+        myButton.style.height = '60px';
+        myButton.style.width = '60px';
+    }
+    let chars = ["+", "-", "/", "*", "=", "C"];
+    for (i=0;i<chars.length;i++){
+        let myButton1 = document.getElementById(`button${chars[i]}`);
+        console.log(chars[i])
+        myButton1.style.height = '60px';
+        myButton1.style.width = '60px';
+    }
+    let myButton3 = document.getElementById("txt");
+    myButton3.style.height = "100px"
+    document.getElementById("button1").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '1';
+    });
+    document.getElementById("button2").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '2';
+    });
+    document.getElementById("button3").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '3';
+    });
+    document.getElementById("button4").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '4';
+    });
+    document.getElementById("button5").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '5';
+    });
+    document.getElementById("button6").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '6';
+    });
+    document.getElementById("button7").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '7';
+    });
+    document.getElementById("button8").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '8';
+    });
+    document.getElementById("button9").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '9';
+    });
+    document.getElementById("button0").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '0';
+    });
+    document.getElementById("button+").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        if (txt.value.includes('+')){
+            txt.value += 'нельзя 2 раза вводить знак + ';
+            } else {
+        txt.value += '+';
+        }
+    });
+    document.getElementById("button-").addEventListener('click', function () {
+       let txt = document.getElementById('txt');
+        if (txt.value.includes('-')){
+            txt.value += 'нельзя 2 раза вводить знак  - ';
+            } else {
+        txt.value += '-';
+        }
+    });
+    document.getElementById("button/").addEventListener('click', function () {
+       let txt = document.getElementById('txt');
+        if (txt.value.includes('/')){
+            txt.value += 'нельзя 2 раза вводить знак / ';
+            } else {
+        txt.value += '/';
+        }
+    });
+    document.getElementById("button*").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        if (txt.value.includes('*')){
+            txt.value += 'нельзя 2 раза вводить знак * ';
+            } else {
+        txt.value += '*';
+        }
+    });
+    document.getElementById("buttonC").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value = '';
+    });
+    </script>
+</body>
+</html>
