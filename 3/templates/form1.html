@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пример обработки формы через AJAX</title>
+    <title>КАЛЬКУЛЯТОР AJAX</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function send(){
@@ -19,12 +19,21 @@
             })
         }
     </script>
+    <style>
+        div {
+                text-align: center;
+            }
+        h1 {
+                color:SteelBlue
+            }
+     </style>
 </head>
-<body>
+<body bgcolor="LightCoral">
 
 
 <br>
-<h1></h1>
+<div>
+<h1>Калькулятор</h1>
 <form action="/calc" method="post">
       <input type="text" value="" id="txt" name="qwerty" style="width: 250px"/>
 <br />
@@ -47,21 +56,32 @@
 <input type="button" value="*" id="button*" />
 <input type="button" value="=" onclick="send()" id="button=" />
 <input type="button" value="C" id="buttonC" />
+<br>
+<input type="button" value="." id="button." />
+<input type="button" value="V" id="buttonV" />
+<input type="button" value="%" id="button%" />
+<input type="button" value="R" id="buttonR" />
+</div>
 <script>
+    let t = document.getElementById('txt');
+    t.style.color = 'blue';
     for (i=0;i<10;i++){
         let myButton = document.getElementById(`button${i}`);
         myButton.style.height = '60px';
         myButton.style.width = '60px';
+        myButton.style.color = 'blue';
     }
-    let chars = ["+", "-", "/", "*", "=", "C"];
+    let chars = ["+", "-", "/", "*", "=", "C", ".", "V", "%", "R"];
     for (i=0;i<chars.length;i++){
         let myButton1 = document.getElementById(`button${chars[i]}`);
         console.log(chars[i])
         myButton1.style.height = '60px';
         myButton1.style.width = '60px';
+        myButton1.style.color = 'blue';
     }
     let myButton3 = document.getElementById("txt");
     myButton3.style.height = "100px"
+
     document.getElementById("button1").addEventListener('click', function () {
         let txt = document.getElementById('txt');
         txt.value += '1';
@@ -138,6 +158,25 @@
         let txt = document.getElementById('txt');
         txt.value = '';
     });
+    document.getElementById("button.").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value += '.';
+    });
+    document.getElementById("buttonR").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        let a = txt.value.slice(0, -1);
+        console.log(a)
+        txt.value=a
+    });
+    document.getElementById("buttonV").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value+='V'
+    });
+    document.getElementById("button%").addEventListener('click', function () {
+        let txt = document.getElementById('txt');
+        txt.value+='%'
+    });
+
     </script>
 </body>
 </html>
